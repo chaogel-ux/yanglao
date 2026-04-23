@@ -1083,7 +1083,7 @@ phone_html = """
                                 </div>
                                 <div class="empty-title">智能护理助手</div>
                                 <div class="empty-desc">
-                                    可点击下方“全程录音”演示服务留痕分析，<br>
+                                    可点击右侧加号菜单中的“全程录音”演示服务留痕分析，<br>
                                     也可使用语音按钮体验护理记录生成，或点加号查看历史服务记录。
                                 </div>
                             </div>
@@ -1094,7 +1094,6 @@ phone_html = """
 
                         <div class="bottom-panel">
                             <div class="chips-scroll">
-                                <span class="chip-btn primary" data-action="full_record">● 全程录音</span>
                                 <span class="chip-btn" data-action="task">⚡ 今日护理任务</span>
                                 <span class="chip-btn" data-action="bed">✨ 查看床位清单</span>
                                 <span class="chip-btn" data-action="todo">📋 查询待办服务</span>
@@ -1158,8 +1157,17 @@ phone_html = """
                     <div id="moreSheet" class="more-sheet">
                         <div class="sheet-handle"></div>
                         <div class="sheet-title">更多功能</div>
-                        <div class="sheet-subtitle">点击下方入口可查看服务留痕归档，后续能力将在此处继续扩展。</div>
+                        <div class="sheet-subtitle">点击下方入口可发起服务留痕演示或查看历史服务归档，后续能力将在此处继续扩展。</div>
                         <div class="sheet-grid">
+                            <button id="fullRecordMenuBtn" class="sheet-action-card" type="button">
+                                <div class="sheet-icon-box">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <circle cx="12" cy="12" r="7"></circle>
+                                        <circle cx="12" cy="12" r="2.5" fill="#123a6b" stroke="none"></circle>
+                                    </svg>
+                                </div>
+                                <span class="sheet-action-label">AI智能护理</span>
+                            </button>
                             <button id="historyMenuBtn" class="sheet-action-card" type="button">
                                 <div class="sheet-icon-box">
                                     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -1169,10 +1177,10 @@ phone_html = """
                                         <path d="M8 16h5"></path>
                                     </svg>
                                 </div>
-                                <span class="sheet-action-label">历史服务记录</span>
+                                <span class="sheet-action-label">历史服务</span>
                             </button>
                         </div>
-                        <div class="sheet-helper">当前演示菜单仅开放“历史服务记录”，其余扩展能力将在后续版本中接入。</div>
+                        <div class="sheet-helper">当前演示菜单已开放“全程录音”和“历史服务记录”，其余扩展能力将在后续版本中接入。</div>
                     </div>
 
                     <div class="home-indicator"></div>
@@ -1225,6 +1233,7 @@ phone_html = """
     const moreBtn = document.getElementById("moreBtn");
     const sheetOverlay = document.getElementById("sheetOverlay");
     const moreSheet = document.getElementById("moreSheet");
+    const fullRecordMenuBtn = document.getElementById("fullRecordMenuBtn");
     const historyMenuBtn = document.getElementById("historyMenuBtn");
     const chipButtons = document.querySelectorAll(".chip-btn");
 
@@ -2030,6 +2039,10 @@ phone_html = """
 
     moreBtn.addEventListener("click", openMoreSheet);
     sheetOverlay.addEventListener("click", closeMoreSheet);
+    fullRecordMenuBtn.addEventListener("click", () => {
+        closeMoreSheet();
+        openRecordingDemo();
+    });
     historyMenuBtn.addEventListener("click", () => {
         closeMoreSheet();
         openHistoryList();
