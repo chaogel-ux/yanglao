@@ -809,6 +809,226 @@ phone_html = """
         padding-bottom: 10px;
     }
 
+    .live-audio-card {
+        overflow: hidden;
+    }
+
+    .live-audio-row,
+    .playback-audio-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .audio-main {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .audio-main-title {
+        font-size: 15px;
+        font-weight: 800;
+        color: #123a6b;
+        line-height: 1.4;
+    }
+
+    .audio-main-desc {
+        margin-top: 4px;
+        font-size: 12px;
+        color: #7f90a5;
+        line-height: 1.7;
+    }
+
+    .audio-wave-shell {
+        margin-top: 12px;
+        background: #f7f9fc;
+        border: 1px solid #e8eef5;
+        border-radius: 16px;
+        padding: 12px 14px;
+        overflow: hidden;
+    }
+
+    .audio-wave-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 8px;
+    }
+
+    .audio-wave-label {
+        font-size: 12px;
+        font-weight: 700;
+        color: #627893;
+    }
+
+    .audio-wave-time {
+        font-size: 12px;
+        font-weight: 800;
+        color: #123a6b;
+    }
+
+    .audio-wave-track {
+        position: relative;
+        height: 42px;
+        display: flex;
+        align-items: center;
+    }
+
+    .audio-wave-bg {
+        position: absolute;
+        inset: 0;
+        border-radius: 12px;
+        background: linear-gradient(90deg, rgba(18,58,107,0.04) 0%, rgba(18,58,107,0.10) 100%);
+    }
+
+    .audio-wave-progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 36%;
+        border-radius: 12px;
+        background: linear-gradient(90deg, rgba(18,58,107,0.12) 0%, rgba(38,90,146,0.18) 100%);
+        opacity: 0;
+    }
+
+    .wave-bars {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 3px;
+    }
+
+    .wave-bar {
+        flex: 1;
+        min-width: 3px;
+        border-radius: 999px;
+        background: #9bb0c8;
+        height: 28%;
+    }
+
+    .wave-bars.live .wave-bar {
+        animation: wavePulse 1.4s ease-in-out infinite;
+        background: linear-gradient(180deg, #77a2d1 0%, #123a6b 100%);
+    }
+
+    .wave-bars.live.stopped {
+        display: none;
+    }
+
+    .wave-bars.playback .wave-bar {
+        background: linear-gradient(180deg, #c8d6e6 0%, #8ea7c3 100%);
+        opacity: 0;
+    }
+
+    .wave-bars.playback .wave-bar.active {
+        background: linear-gradient(180deg, #77a2d1 0%, #123a6b 100%);
+    }
+
+    .playback-audio-card.is-playing .audio-wave-progress {
+        opacity: 1;
+        animation: playbackSweep 2.4s linear infinite;
+    }
+
+    .playback-audio-card.is-playing .wave-bars.playback .wave-bar {
+        opacity: 1;
+        animation: wavePulse 1.4s ease-in-out infinite;
+    }
+
+    @keyframes playbackSweep {
+        0% {
+            width: 12%;
+            opacity: 0.55;
+        }
+        50% {
+            width: 56%;
+            opacity: 0.95;
+        }
+        100% {
+            width: 90%;
+            opacity: 0.55;
+        }
+    }
+
+    @keyframes wavePulse {
+        0%, 100% {
+            height: 24%;
+        }
+        20% {
+            height: 78%;
+        }
+        45% {
+            height: 42%;
+        }
+        70% {
+            height: 66%;
+        }
+    }
+
+    .stream-card {
+        min-height: 250px;
+    }
+
+    .streaming-list {
+        min-height: 170px;
+    }
+
+    .stream-line {
+        animation: streamFadeIn 0.28s ease;
+    }
+
+    @keyframes streamFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(6px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .stream-placeholder {
+        min-height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px 14px;
+        border-radius: 14px;
+        background: #f8fafc;
+        border: 1px solid #edf1f6;
+        color: #95a3b5;
+        font-size: 13px;
+        line-height: 1.8;
+        text-align: center;
+    }
+
+    .playback-audio-card {
+        padding-bottom: 16px;
+    }
+
+    .play-btn {
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        border: none;
+        background: #123a6b;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 800;
+        box-shadow: 0 10px 24px rgba(18,58,107,0.16);
+        cursor: pointer;
+    }
+
+    .play-btn:active {
+        transform: scale(0.97);
+    }
+
     .status-card-top {
         display: flex;
         justify-content: space-between;
@@ -1070,8 +1290,8 @@ phone_html = """
                     </div>
 
                     <div class="top-bar">
-                        <div id="topTitle" class="top-title">智能护理助手</div>
-                        <div id="topSubtitle" class="top-subtitle">护理助手与服务留痕 Demo</div>
+                        <div id="topTitle" class="top-title">AI护理助手</div>
+                        <div id="topSubtitle" class="top-subtitle">护理助手与服务留痕</div>
                     </div>
 
                     <div id="mainView" class="main-view">
@@ -1081,10 +1301,10 @@ phone_html = """
                                     <div class="empty-icon-wrap">
                                     <div class="empty-icon-box">🎙️</div>
                                 </div>
-                                <div class="empty-title">智能护理助手</div>
+                                <div class="empty-title">AI护理助手</div>
                                 <div class="empty-desc">
-                                    可点击右侧加号菜单中的“全程录音”演示服务留痕分析，<br>
-                                    也可使用语音按钮体验护理记录生成，或点加号查看历史服务记录。
+                                    “AI智能服务”可分析服务对话，提供服务留痕分析结果<br>
+                                    也可使用语音输入护理记录，菜单中查看历史服务记录
                                 </div>
                             </div>
                         </div>
@@ -1103,7 +1323,7 @@ phone_html = """
                             <div class="input-row">
                                 <input id="textInput" class="text-input" placeholder="发送消息或按回车发送..." />
                                 <div class="input-actions">
-                                    <button id="voiceBtn" class="input-action-btn" title="语音演示" type="button" aria-label="语音演示">
+                                    <button id="voiceBtn" class="input-action-btn" title="语音输入" type="button" aria-label="语音输入">
                                         <svg viewBox="0 0 24 24" aria-hidden="true">
                                             <path d="M12 5.5a2.8 2.8 0 0 1 2.8 2.8v4.2a2.8 2.8 0 1 1-5.6 0V8.3A2.8 2.8 0 0 1 12 5.5Z"></path>
                                             <path d="M7.8 12.5a4.2 4.2 0 0 0 8.4 0"></path>
@@ -1123,18 +1343,11 @@ phone_html = """
 
                     <div id="recordingView" class="recording-view hidden">
                         <div class="recording-scroll">
-                            <div class="recording-hero">
-                                <div id="sceneBadge" class="scene-badge">异常服务演示</div>
-                                <div class="recording-hero-title">服务过程留痕</div>
-                                <div class="recording-hero-desc">录音结束后自动整理服务对话并生成标签</div>
-                            </div>
-
                             <div id="recordingContent" class="recording-stack"></div>
                         </div>
 
                         <div class="recording-footer">
-                            <button id="backBtn" class="footer-btn secondary">返回助手</button>
-                            <button id="analyzeBtn" class="footer-btn primary">结束录音并分析</button>
+                            <button id="analyzeBtn" class="footer-btn primary" style="flex:1;">结束录音并提交</button>
                         </div>
                     </div>
 
@@ -1157,7 +1370,7 @@ phone_html = """
                     <div id="moreSheet" class="more-sheet">
                         <div class="sheet-handle"></div>
                         <div class="sheet-title">更多功能</div>
-                        <div class="sheet-subtitle">点击下方入口可发起服务留痕演示或查看历史服务归档，后续能力将在此处继续扩展。</div>
+                        <div class="sheet-subtitle">点击下方入口可发起 AI 智能服务或查看历史服务归档，后续能力将在此处继续扩展。</div>
                         <div class="sheet-grid">
                             <button id="fullRecordMenuBtn" class="sheet-action-card" type="button">
                                 <div class="sheet-icon-box">
@@ -1166,7 +1379,7 @@ phone_html = """
                                         <circle cx="12" cy="12" r="2.5" fill="#123a6b" stroke="none"></circle>
                                     </svg>
                                 </div>
-                                <span class="sheet-action-label">AI智能护理</span>
+                                <span class="sheet-action-label">AI智能服务</span>
                             </button>
                             <button id="historyMenuBtn" class="sheet-action-card" type="button">
                                 <div class="sheet-icon-box">
@@ -1180,7 +1393,7 @@ phone_html = """
                                 <span class="sheet-action-label">历史服务</span>
                             </button>
                         </div>
-                        <div class="sheet-helper">当前演示菜单已开放“全程录音”和“历史服务记录”，其余扩展能力将在后续版本中接入。</div>
+                        <div class="sheet-helper">当前菜单已开放“AI智能服务”和“历史服务记录”，其余扩展能力将在后续版本中接入。</div>
                     </div>
 
                     <div class="home-indicator"></div>
@@ -1192,12 +1405,17 @@ phone_html = """
 <script>
     const DEFAULT_TOP = {
         title: "智能护理助手",
-        subtitle: "护理助手与服务留痕 Demo"
+        subtitle: "护理助手与服务留痕"
     };
 
     const RECORDING_TOP = {
-        title: "服务过程留痕",
-        subtitle: "录音结束后自动整理服务对话并生成标签"
+        title: "AI智能服务",
+        subtitle: "服务对话实时转写与智能分析"
+    };
+
+    const ANALYSIS_TOP = {
+        title: "AI智能分析",
+        subtitle: "服务录音、对话内容与智能建议"
     };
 
     const HISTORY_LIST_TOP = {
@@ -1219,9 +1437,7 @@ phone_html = """
     const recordingContent = document.getElementById("recordingContent");
     const historyListContent = document.getElementById("historyListContent");
     const historyDetailContent = document.getElementById("historyDetailContent");
-    const sceneBadge = document.getElementById("sceneBadge");
     const analyzeBtn = document.getElementById("analyzeBtn");
-    const backBtn = document.getElementById("backBtn");
     const historyListBackBtn = document.getElementById("historyListBackBtn");
     const historyDetailBackBtn = document.getElementById("historyDetailBackBtn");
     const historyDetailHomeBtn = document.getElementById("historyDetailHomeBtn");
@@ -1242,6 +1458,8 @@ phone_html = """
     let currentRecordingScenario = null;
     let recordingAnalyzed = false;
     let analyzingTimer = null;
+    let transcriptStreamTimer = null;
+    let streamedTranscriptCount = 0;
     let historyRecordCounter = 0;
     let historyRecords = [];
     let currentHistoryRecord = null;
@@ -1295,7 +1513,7 @@ phone_html = """
         },
         bed: {
             user: "查看床位清单",
-            assistant: "已为您展示当前床位占用情况，以下为演示数据。",
+            assistant: "已为您展示当前床位占用情况，以下为当前床位数据。",
             card: `
                 <div class="info-card">
                     <div class="card-title">床位清单</div>
@@ -1443,12 +1661,14 @@ phone_html = """
 
     const recordingScenarios = [
         {
-            sceneLabel: "异常服务演示",
+            sceneLabel: "异常服务",
             tone: "warning",
             resident: "王秀兰",
             bed: "A-201",
             service: "翻身护理 / 擦浴协助",
             worker: "李护理员",
+            startTime: "2026-04-22 10:12:24",
+            endTime: "2026-04-22 10:18:42",
             duration: "06:18",
             banner: "检测到明显负面体验信号",
             summary: "服务过程中，老人多次表达疼痛与明显不适，对护工动作力度和服务节奏表示持续不满。",
@@ -1473,12 +1693,14 @@ phone_html = """
             ]
         },
         {
-            sceneLabel: "满意服务演示",
+            sceneLabel: "满意服务",
             tone: "positive",
             resident: "王秀兰",
             bed: "A-201",
             service: "擦浴协助 / 床铺整理",
             worker: "李护理员",
+            startTime: "2026-04-22 09:18:10",
+            endTime: "2026-04-22 09:23:52",
             duration: "05:42",
             banner: "本次服务体验良好",
             summary: "服务过程中沟通顺畅，老人情绪平稳，并明确表达认可，整体体验良好。",
@@ -1502,12 +1724,14 @@ phone_html = """
             ]
         },
         {
-            sceneLabel: "轻微不适演示",
+            sceneLabel: "轻微不适",
             tone: "watch",
             resident: "王秀兰",
             bed: "A-201",
             service: "翻身护理",
             worker: "李护理员",
+            startTime: "2026-04-22 08:41:06",
+            endTime: "2026-04-22 08:46:02",
             duration: "04:56",
             banner: "存在轻微不适反馈，已通过沟通缓和",
             summary: "服务过程中老人短暂表达不适，护工及时调整动作与节奏，沟通后情绪恢复平稳。",
@@ -1532,9 +1756,9 @@ phone_html = """
     ];
 
     const initialHistoryEntries = [
-        { sceneLabel: "异常服务演示", archivedAt: "2026-04-22 10:36" },
-        { sceneLabel: "满意服务演示", archivedAt: "2026-04-22 09:48" },
-        { sceneLabel: "轻微不适演示", archivedAt: "2026-04-22 08:55" }
+        { sceneLabel: "异常服务", archivedAt: "2026-04-22 10:36" },
+        { sceneLabel: "满意服务", archivedAt: "2026-04-22 09:48" },
+        { sceneLabel: "轻微不适", archivedAt: "2026-04-22 08:55" }
     ];
 
     const voiceSequence = ["task", "care_record", "profile", "bed", "focus"];
@@ -1696,23 +1920,13 @@ phone_html = """
         return tags.map(tag => `<span class="tag tag-${tag.tone}">${tag.text}</span>`).join("");
     }
 
-    function buildArchiveOverviewCard(record) {
-        return `
-            <div class="info-card">
-                <div class="card-title">服务记录概览</div>
-                <div class="card-desc">该记录来自全程录音分析后的服务归档，可用于服务过程追溯与质量复核。</div>
-                <div class="profile-grid">
-                    <div class="profile-label">服务对象</div><div class="profile-value">${record.resident}</div>
-                    <div class="profile-label">床位</div><div class="profile-value">${record.bed}</div>
-                    <div class="profile-label">服务项目</div><div class="profile-value">${record.service}</div>
-                    <div class="profile-label">执行护工</div><div class="profile-value">${record.worker}</div>
-                    <div class="profile-label">归档时间</div><div class="profile-value">${record.archivedAt}</div>
-                    <div class="profile-label">记录来源</div><div class="profile-value">${record.source}</div>
-                    <div class="profile-label">满意度</div><div class="profile-value">${record.satisfaction}</div>
-                </div>
-                <div class="tag-row">${buildTagRow(record.tags)}</div>
-            </div>
-        `;
+    function buildWaveBarsMarkup(mode) {
+        const totalBars = 24;
+        return Array.from({ length: totalBars }, (_, index) => {
+            const activeClass = mode === "playback" && index < 10 ? " active" : "";
+            const delay = (index % 6) * 0.12;
+            return `<span class="wave-bar${activeClass}" style="animation-delay:${delay}s"></span>`;
+        }).join("");
     }
 
     function buildArchiveCard(record) {
@@ -1736,13 +1950,17 @@ phone_html = """
         `;
     }
 
-    function buildTranscriptCard(scenario) {
-        const items = scenario.transcript.map(item => `
-            <div class="transcript-line">
+    function buildTranscriptLinesMarkup(transcript, count, extraClass) {
+        return transcript.slice(0, count).map(item => `
+            <div class="transcript-line ${extraClass || ""}">
                 <span class="transcript-speaker">${item.speaker}</span>
                 <div class="transcript-text">${item.text}</div>
             </div>
         `).join("");
+    }
+
+    function buildTranscriptCard(scenario) {
+        const items = buildTranscriptLinesMarkup(scenario.transcript, scenario.transcript.length, "");
 
         return `
             <div class="info-card">
@@ -1753,14 +1971,80 @@ phone_html = """
         `;
     }
 
+    function buildLiveAudioCard(scenario) {
+        return `
+            <div class="info-card live-audio-card">
+                <div class="live-audio-row">
+                    <div class="audio-main">
+                        <div class="audio-main-title">录音条实时采集中</div>
+                        <div class="audio-main-desc">系统正在持续采集本次服务对话，并同步生成实时转写内容。</div>
+                    </div>
+                    <div class="status-pill">
+                        <span class="record-dot"></span>
+                        录音中
+                    </div>
+                </div>
+                <div class="audio-wave-shell">
+                    <div class="audio-wave-top">
+                        <span class="audio-wave-label">服务录音流</span>
+                        <span class="audio-wave-time">${scenario.startTime}</span>
+                    </div>
+                    <div class="audio-wave-track">
+                        <div class="audio-wave-bg"></div>
+                        <div id="liveWaveBars" class="wave-bars live">${buildWaveBarsMarkup("live")}</div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function buildStreamingCard() {
+        return `
+            <div class="info-card stream-card">
+                <div class="card-title">实时对话转写</div>
+                <div class="card-desc">下方内容将按照录音过程逐句流式输出，提交后会与完整对话内容保持一致。</div>
+                <div id="streamingTranscriptList" class="transcript-list streaming-list"></div>
+            </div>
+        `;
+    }
+
+    function buildPlaybackCard(scenario) {
+        return `
+            <div class="info-card playback-audio-card">
+                <div class="card-title">录音回放</div>
+                <div class="card-desc">以下为本次服务录音回放信息，可配合完整对话和 AI 建议查看完整内容。</div>
+                <div class="playback-audio-row">
+                    <div class="audio-main">
+                        <div class="audio-wave-shell">
+                            <div class="audio-wave-top">
+                                <span class="audio-wave-label">服务录音文件</span>
+                                <span class="audio-wave-time">${scenario.duration}</span>
+                            </div>
+                            <div class="audio-wave-track">
+                                <div class="audio-wave-bg"></div>
+                                <div class="audio-wave-progress"></div>
+                                <div class="wave-bars playback">${buildWaveBarsMarkup("playback")}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="play-btn" type="button" aria-label="播放录音" aria-pressed="false">▶</button>
+                </div>
+            </div>
+        `;
+    }
+
     function buildAnalysisCard(scenario) {
         return `
             <div class="info-card">
-                <div class="card-title">AI分析建议</div>
+                <div class="card-title">AI建议分析</div>
                 <div class="analysis-summary tone-${scenario.tone}">${scenario.banner}</div>
                 <div class="analysis-grid">
                     <div class="analysis-label">服务对象</div><div class="analysis-value">${scenario.resident}</div>
+                    <div class="analysis-label">床位</div><div class="analysis-value">${scenario.bed}</div>
                     <div class="analysis-label">服务项目</div><div class="analysis-value">${scenario.service}</div>
+                    <div class="analysis-label">执行护工</div><div class="analysis-value">${scenario.worker}</div>
+                    <div class="analysis-label">开始时间</div><div class="analysis-value">${scenario.startTime}</div>
+                    <div class="analysis-label">结束时间</div><div class="analysis-value">${scenario.endTime}</div>
                     <div class="analysis-label">录音时长</div><div class="analysis-value">${scenario.duration}</div>
                     <div class="analysis-label">对话摘要</div><div class="analysis-value">${scenario.summary}</div>
                     <div class="analysis-label">关键反馈</div><div class="analysis-value">${scenario.keyFeedback}</div>
@@ -1773,23 +2057,105 @@ phone_html = """
         `;
     }
 
+    function renderStreamingTranscript() {
+        const streamContainer = document.getElementById("streamingTranscriptList");
+        if (!streamContainer || !currentRecordingScenario) return;
+
+        if (streamedTranscriptCount === 0) {
+            streamContainer.innerHTML = `
+                <div class="stream-placeholder">
+                    正在接收本次服务对话内容，识别结果将随着录音持续逐句显示。
+                </div>
+            `;
+            return;
+        }
+
+        streamContainer.innerHTML = buildTranscriptLinesMarkup(
+            currentRecordingScenario.transcript,
+            streamedTranscriptCount,
+            "stream-line"
+        );
+    }
+
+    function setLiveWaveRunning(isRunning) {
+        const liveWaveBars = document.getElementById("liveWaveBars");
+        if (!liveWaveBars) return;
+
+        liveWaveBars.classList.toggle("stopped", !isRunning);
+    }
+
+    function clearTranscriptStream() {
+        if (transcriptStreamTimer) {
+            clearTimeout(transcriptStreamTimer);
+            transcriptStreamTimer = null;
+        }
+    }
+
+    function scheduleTranscriptStep(delay) {
+        transcriptStreamTimer = setTimeout(() => {
+            if (!currentRecordingScenario || recordingAnalyzed) {
+                transcriptStreamTimer = null;
+                return;
+            }
+
+            if (streamedTranscriptCount < currentRecordingScenario.transcript.length) {
+                streamedTranscriptCount += 1;
+                renderStreamingTranscript();
+                scheduleTranscriptStep(860);
+                return;
+            }
+
+            setLiveWaveRunning(false);
+            transcriptStreamTimer = null;
+        }, delay);
+    }
+
+    function startTranscriptStream() {
+        clearTranscriptStream();
+        streamedTranscriptCount = 0;
+        renderStreamingTranscript();
+        setLiveWaveRunning(true);
+        scheduleTranscriptStep(360);
+    }
+
+    function bindDemoPlayButtons(container) {
+        if (!container) return;
+
+        container.querySelectorAll(".play-btn").forEach(button => {
+            button.addEventListener("click", () => {
+                const currentCard = button.closest(".playback-audio-card");
+                const isPlaying = button.getAttribute("aria-pressed") === "true";
+
+                container.querySelectorAll(".playback-audio-card.is-playing").forEach(card => {
+                    if (card !== currentCard) {
+                        card.classList.remove("is-playing");
+                        const otherButton = card.querySelector(".play-btn");
+                        if (otherButton) {
+                            otherButton.setAttribute("aria-pressed", "false");
+                            otherButton.textContent = "▶";
+                        }
+                    }
+                });
+
+                if (currentCard) {
+                    currentCard.classList.toggle("is-playing", !isPlaying);
+                }
+
+                button.setAttribute("aria-pressed", isPlaying ? "false" : "true");
+                button.textContent = isPlaying ? "▶" : "❚❚";
+            });
+        });
+    }
+
     function renderRecordingLanding() {
         if (!currentRecordingScenario) return;
 
         recordingContent.innerHTML = `
-            ${buildStatusCard(currentRecordingScenario, {
-                title: "服务执行中",
-                description: "系统正在记录本次服务过程对话，用于服务留痕与事后分析。",
-                status: "录音中",
-                hideDuration: true,
-                note: "点击“结束录音并分析”后，将展示一段预设的完整对话内容，并自动生成服务摘要、满意度判断与标签建议。"
-            })}
-            <div class="info-card">
-                <div class="card-title">演示说明</div>
-                <div class="card-desc">当前为产品演示模式，不调用真实录音与 AI 服务，页面展示均为预设剧本内容。</div>
-                <div class="helper-text">建议演示顺序：先看异常服务场景，再切换满意与轻微不适场景，能更完整体现产品能力。</div>
-            </div>
+            ${buildLiveAudioCard(currentRecordingScenario)}
+            ${buildStreamingCard()}
         `;
+
+        renderStreamingTranscript();
     }
 
     function renderAnalyzingState() {
@@ -1797,8 +2163,8 @@ phone_html = """
 
         recordingContent.innerHTML = `
             ${buildStatusCard(currentRecordingScenario, {
-                title: "录音已结束",
-                description: "本次服务录音已完成，系统正在整理服务摘要与标签建议。",
+                title: "录音已提交",
+                description: "本次服务录音已提交，系统正在整理完整对话、录音信息与智能分析建议。",
                 status: "分析中",
                 stopped: true
             })}
@@ -1807,7 +2173,7 @@ phone_html = """
                     <div class="loading-spinner"></div>
                     <div>
                         <div class="card-title">正在整理本次服务对话</div>
-                        <div class="card-desc">请稍候，系统将自动生成完整对话、满意度判断与服务标签建议。</div>
+                        <div class="card-desc">请稍候，系统将自动生成完整对话、录音回放条与 AI 建议分析。</div>
                     </div>
                 </div>
             </div>
@@ -1818,15 +2184,12 @@ phone_html = """
         if (!currentRecordingScenario) return;
 
         recordingContent.innerHTML = `
-            ${buildStatusCard(currentRecordingScenario, {
-                title: "分析已完成",
-                description: "本次服务对话已整理完成，可查看完整内容与标签建议。",
-                status: "已完成分析",
-                stopped: true
-            })}
-            ${buildTranscriptCard(currentRecordingScenario)}
             ${buildAnalysisCard(currentRecordingScenario)}
+            ${buildPlaybackCard(currentRecordingScenario)}
+            ${buildTranscriptCard(currentRecordingScenario)}
         `;
+
+        bindDemoPlayButtons(recordingContent);
     }
 
     function renderHistoryList() {
@@ -1839,7 +2202,7 @@ phone_html = """
             <div class="recording-stack">
                 <div class="info-card">
                     <div class="card-title">最近服务归档</div>
-                    <div class="card-desc">以下为服务留痕演示数据，覆盖满意、不满意与轻微不适等典型服务场景。</div>
+                    <div class="card-desc">以下记录覆盖满意、不满意与轻微不适等典型服务场景。</div>
                 </div>
                 <div class="archive-list">
                     ${historyRecords.map(buildArchiveCard).join("")}
@@ -1868,28 +2231,32 @@ phone_html = """
                 <div class="recording-hero-desc">查看本次服务的归档信息、完整对话内容与分析建议。</div>
             </div>
             <div class="recording-stack">
-                ${buildArchiveOverviewCard(currentHistoryRecord)}
-                ${buildTranscriptCard(currentHistoryRecord)}
                 ${buildAnalysisCard(currentHistoryRecord)}
+                ${buildPlaybackCard(currentHistoryRecord)}
+                ${buildTranscriptCard(currentHistoryRecord)}
             </div>
         `;
+
+        bindDemoPlayButtons(historyDetailContent);
     }
 
     function openRecordingDemo() {
         currentRecordingScenario = recordingScenarios[recordingScenarioIndex % recordingScenarios.length];
         recordingScenarioIndex += 1;
         recordingAnalyzed = false;
+        streamedTranscriptCount = 0;
 
         if (analyzingTimer) {
             clearTimeout(analyzingTimer);
             analyzingTimer = null;
         }
 
-        sceneBadge.textContent = currentRecordingScenario.sceneLabel;
-        analyzeBtn.textContent = "结束录音并分析";
+        clearTranscriptStream();
+        analyzeBtn.textContent = "结束录音并提交";
         analyzeBtn.disabled = false;
         showView(recordingView, RECORDING_TOP);
         renderRecordingLanding();
+        startTranscriptStream();
     }
 
     function closeRecordingDemo() {
@@ -1898,6 +2265,7 @@ phone_html = """
             analyzingTimer = null;
         }
 
+        clearTranscriptStream();
         recordingAnalyzed = false;
         showView(mainView, DEFAULT_TOP);
     }
@@ -1918,18 +2286,20 @@ phone_html = """
         if (!currentRecordingScenario) return;
 
         if (recordingAnalyzed) {
-            openRecordingDemo();
+            closeRecordingDemo();
             return;
         }
 
+        clearTranscriptStream();
         analyzeBtn.disabled = true;
+        setTopBar(ANALYSIS_TOP);
         renderAnalyzingState();
 
         analyzingTimer = setTimeout(() => {
             recordingAnalyzed = true;
             archiveCurrentScenario();
             analyzeBtn.disabled = false;
-            analyzeBtn.textContent = "演示下一段";
+            analyzeBtn.textContent = "返回助手";
             renderRecordingResult();
             analyzingTimer = null;
         }, 720);
@@ -1942,7 +2312,7 @@ phone_html = """
     function parseAction(text) {
         const q = normalizeInput(text);
 
-        if (q.includes("全程录音") || q.includes("服务留痕") || q.includes("对话分析")) {
+        if (q.includes("AI智能服务") || q.includes("AI智能护理") || q.includes("全程录音") || q.includes("服务留痕") || q.includes("对话分析")) {
             return "full_record";
         }
         if (q.includes("历史服务记录") || q.includes("历史记录") || q.includes("服务归档")) {
@@ -2010,7 +2380,7 @@ phone_html = """
             setTimeout(() => {
                 addTextMessage(
                     "assistant",
-                    "当前为演示 demo，您可以尝试输入：全程录音、历史服务记录、今日护理任务、王秀兰老人基本情况、查看床位清单、查询待办服务、重点关注对象。"
+                    "您可以尝试输入：AI智能服务、历史服务记录、今日护理任务、王秀兰老人基本情况、查看床位清单、查询待办服务、重点关注对象。"
                 );
             }, 280);
         }
@@ -2049,7 +2419,6 @@ phone_html = """
     });
 
     analyzeBtn.addEventListener("click", handleAnalyzeClick);
-    backBtn.addEventListener("click", closeRecordingDemo);
     historyListBackBtn.addEventListener("click", () => {
         showView(mainView, DEFAULT_TOP);
     });
