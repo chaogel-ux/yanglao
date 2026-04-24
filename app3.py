@@ -1540,7 +1540,7 @@ phone_html = """
 
                     <div class="top-bar">
                         <div id="topTitle" class="top-title">AI护理助手</div>
-                        <div id="topSubtitle" class="top-subtitle">护理助手与服务留痕</div>
+                        
                     </div>
 
                     <div id="mainView" class="main-view">
@@ -1552,7 +1552,7 @@ phone_html = """
                                     </div>
                                     <div class="empty-title">AI护理助手</div>
                                     <div class="empty-desc">
-                                        “开始服务”可分析服务对话，提供服务留痕分析结果
+                                        护理助手与服务留痕
                                     </div>
                                 </div>
                             </div>
@@ -1652,7 +1652,7 @@ phone_html = """
 <script>
     const DEFAULT_TOP = {
         title: "AI护理助手",
-        subtitle: "护理助手与服务留痕"
+        subtitle: "“开始服务”可分析服务对话，提供服务留痕分析结果"
     };
 
     const RECORDING_TOP = {
