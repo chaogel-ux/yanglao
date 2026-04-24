@@ -1540,7 +1540,7 @@ phone_html = """
 
                     <div class="top-bar">
                         <div id="topTitle" class="top-title">AI护理助手</div>
-                        
+                        <div id="topSubtitle" class="top-subtitle"></div>
                     </div>
 
                     <div id="mainView" class="main-view">
@@ -1652,7 +1652,7 @@ phone_html = """
 <script>
     const DEFAULT_TOP = {
         title: "AI护理助手",
-        subtitle: "“开始服务”可分析服务对话，提供服务留痕分析结果"
+        subtitle: ""
     };
 
     const RECORDING_TOP = {
@@ -2395,13 +2395,23 @@ phone_html = """
     function buildLiveAudioCard(scenario, options = {}) {
         const idle = Boolean(options.idle);
         const stopped = Boolean(options.stopped);
-        const title = options.title || (idle ? "录音待开始" : (stopped ? "录音已结束" : "录音采集中"));
-        const description = options.description || (idle
-            ? "请选择老人信息和服务项目，开始录音后将采集本次服务对话。"
-            : (stopped
-            ? "本次服务录音已结束，系统正在整理并转写对话内容。"
-            : "系统正在持续采集本次服务对话，结束录音后可发起转写。"));
-        const status = options.status || (idle ? "待开始" : (stopped ? "已结束" : "录音中"));
+        let title = "录音采集中";
+        let description = "系统正在持续采集本次服务对话，结束录音后可发起转写。";
+        let status = "录音中";
+
+        if (idle) {
+            title = "录音待开始";
+            description = "请选择老人信息和服务项目，开始录音后将采集本次服务对话。";
+            status = "待开始";
+        } else if (stopped) {
+            title = "录音已结束";
+            description = "本次服务录音已结束，系统正在整理并转写对话内容。";
+            status = "已结束";
+        }
+
+        title = options.title || title;
+        description = options.description || description;
+        status = options.status || status;
         const statusClass = idle || stopped ? "status-pill stopped" : "status-pill";
         const timeText = options.timeText || (stopped ? scenario.duration : scenario.startTime);
         const waveStoppedClass = idle || stopped ? " stopped" : "";
