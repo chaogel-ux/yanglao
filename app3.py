@@ -150,7 +150,7 @@ phone_html = """
         top: 0;
         left: 0;
         right: 0;
-        bottom: 88px;
+        bottom: 134px;
         overflow-y: auto;
         padding: 4px 14px 12px 14px;
         scroll-behavior: smooth;
@@ -208,6 +208,14 @@ phone_html = """
         line-height: 1.9;
         color: #7f90a5;
         font-weight: 500;
+    }
+
+    .welcome-title {
+        font-size: 20px;
+        line-height: 1.4;
+        font-weight: 800;
+        color: #123a6b;
+        text-align: center;
     }
 
     .message-list {
@@ -640,6 +648,14 @@ phone_html = """
         flex-shrink: 0;
     }
 
+    .archive-side {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 8px;
+        flex-shrink: 0;
+    }
+
     .archive-status-row {
         display: flex;
         align-items: center;
@@ -657,6 +673,11 @@ phone_html = """
         font-weight: 800;
     }
 
+    .archive-status-pill.compact {
+        padding: 5px 9px;
+        font-size: 11px;
+    }
+
     .archive-status-pill.warning {
         background: #fff1ee;
         color: #c34a39;
@@ -668,8 +689,8 @@ phone_html = """
     }
 
     .archive-status-pill.watch {
-        background: #fff8e8;
-        color: #956d1f;
+        background: #ebf8f0;
+        color: #2f7b48;
     }
 
     .archive-scene {
@@ -835,6 +856,11 @@ phone_html = """
         scrollbar-width: none;
     }
 
+    .recording-scroll.full-height {
+        bottom: 0;
+        padding-bottom: 24px;
+    }
+
     .recording-hero {
         padding: 2px 2px 14px 2px;
     }
@@ -874,6 +900,162 @@ phone_html = """
 
     .live-audio-card {
         overflow: hidden;
+    }
+
+    .service-person-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        overflow: visible;
+        position: relative;
+        z-index: 5;
+    }
+
+    .service-person-section {
+        min-width: 0;
+        padding: 12px;
+        border-radius: 14px;
+        background: #f8fafc;
+        border: 1px solid #edf1f6;
+    }
+
+    .service-person-section.selectable {
+        position: relative;
+    }
+
+    .service-person-title {
+        font-size: 12px;
+        font-weight: 800;
+        color: #7a8ca4;
+        margin-bottom: 8px;
+    }
+
+    .service-person-name {
+        font-size: 15px;
+        font-weight: 800;
+        color: #123a6b;
+        line-height: 1.35;
+    }
+
+    .service-person-meta {
+        display: block;
+        margin-top: 4px;
+        font-size: 12px;
+        color: #6f8098;
+        font-weight: 700;
+    }
+
+    .selection-trigger {
+        width: 100%;
+        border: none;
+        background: transparent;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        text-align: left;
+        cursor: pointer;
+    }
+
+    .selection-trigger:disabled {
+        cursor: default;
+        opacity: 0.78;
+    }
+
+    .selection-trigger-main {
+        min-width: 0;
+    }
+
+    .selection-placeholder {
+        color: #9aa8b9;
+    }
+
+    .selection-arrow {
+        color: #7a8ca4;
+        font-size: 16px;
+        font-weight: 800;
+        flex-shrink: 0;
+        transform: translateY(-1px);
+    }
+
+    .selection-menu {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 8px;
+        right: 8px;
+        z-index: 20;
+        padding: 10px;
+        border-radius: 14px;
+        border: 1px solid #e2e9f1;
+        background: #ffffff;
+        box-shadow: 0 14px 34px rgba(24,39,75,0.16);
+        max-height: 290px;
+        overflow-y: auto;
+    }
+
+    .selection-option {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 9px 6px;
+        color: #34465b;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.4;
+        cursor: pointer;
+    }
+
+    .selection-option input {
+        margin-top: 2px;
+        accent-color: #123a6b;
+    }
+
+    .selection-option-meta {
+        display: block;
+        margin-top: 2px;
+        color: #7a8ca4;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .selection-confirm {
+        width: 100%;
+        height: 34px;
+        margin-top: 8px;
+        border: none;
+        border-radius: 12px;
+        background: #123a6b;
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 800;
+        cursor: pointer;
+    }
+
+    .service-select-card {
+        overflow: visible;
+        position: relative;
+        z-index: 4;
+    }
+
+    .service-select-card .selection-menu {
+        left: 14px;
+        right: 14px;
+    }
+
+    .service-select-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .service-select-value {
+        margin-top: 8px;
+        color: #34465b;
+        font-size: 13px;
+        line-height: 1.7;
+        font-weight: 700;
     }
 
     .live-audio-row,
@@ -1287,6 +1469,10 @@ phone_html = """
         background: linear-gradient(180deg, rgba(243,244,246,0.00) 0%, rgba(243,244,246,0.72) 12%, #f3f4f6 28%, #f3f4f6 100%);
     }
 
+    .recording-footer.is-hidden {
+        display: none;
+    }
+
     .footer-btn {
         height: 48px;
         border-radius: 18px;
@@ -1359,11 +1545,28 @@ phone_html = """
 
                     <div id="mainView" class="main-view">
                         <div id="chatArea" class="chat-area">
-                            <div id="emptyState" class="empty-state"></div>
+                            <div id="emptyState" class="empty-state">
+                                <div class="empty-card">
+                                    <div class="empty-icon-wrap">
+                                        <div class="empty-icon-box">🎙️</div>
+                                    </div>
+                                    <div class="empty-title">AI护理助手</div>
+                                    <div class="empty-desc">
+                                        “开始服务”可分析服务对话，提供服务留痕分析结果
+                                    </div>
+                                </div>
+                            </div>
                             <div id="messageList" class="message-list"></div>
                         </div>
 
                         <div class="bottom-panel">
+                            <div class="chips-scroll">
+                                <span class="chip-btn" data-action="task">⚡ 今日护理任务</span>
+                                <span class="chip-btn" data-action="bed">✨ 查看床位清单</span>
+                                <span class="chip-btn" data-action="todo">📋 查询待办服务</span>
+                                <span class="chip-btn" data-action="focus">🩺 重点关注对象</span>
+                            </div>
+
                             <div class="input-row">
                                 <input id="textInput" class="text-input" placeholder="发送消息或按回车发送..." />
                                 <div class="input-actions">
@@ -1386,11 +1589,11 @@ phone_html = """
                     </div>
 
                     <div id="recordingView" class="recording-view hidden">
-                        <div class="recording-scroll">
+                        <div id="recordingScroll" class="recording-scroll">
                             <div id="recordingContent" class="recording-stack"></div>
                         </div>
 
-                        <div class="recording-footer">
+                        <div id="recordingFooter" class="recording-footer">
                             <button id="analyzeBtn" class="footer-btn primary" style="flex:1;">生成AI分析</button>
                         </div>
                     </div>
@@ -1414,7 +1617,7 @@ phone_html = """
                     <div id="moreSheet" class="more-sheet">
                         <div class="sheet-handle"></div>
                         <div class="sheet-title">更多功能</div>
-                        <div class="sheet-subtitle">点击下方入口可发起 AI 智能服务或查看历史服务归档，后续能力将在此处继续扩展。</div>
+                        <div class="sheet-subtitle">点击下方入口可开始服务或查看历史服务归档。</div>
                         <div class="sheet-grid">
                             <button id="fullRecordMenuBtn" class="sheet-action-card" type="button">
                                 <div class="sheet-icon-box">
@@ -1423,7 +1626,7 @@ phone_html = """
                                         <circle cx="12" cy="12" r="2.5" fill="#123a6b" stroke="none"></circle>
                                     </svg>
                                 </div>
-                                <span class="sheet-action-label">AI智能服务</span>
+                                <span class="sheet-action-label">开始服务</span>
                             </button>
                             <button id="historyMenuBtn" class="sheet-action-card" type="button">
                                 <div class="sheet-icon-box">
@@ -1437,7 +1640,7 @@ phone_html = """
                                 <span class="sheet-action-label">历史服务记录</span>
                             </button>
                         </div>
-                        <div class="sheet-helper">当前菜单已开放“AI智能服务”和“历史服务记录”，其余扩展能力将在后续版本中接入。</div>
+                        
                     </div>
 
                     <div class="home-indicator"></div>
@@ -1479,6 +1682,8 @@ phone_html = """
     const historyListView = document.getElementById("historyListView");
     const historyDetailView = document.getElementById("historyDetailView");
     const recordingContent = document.getElementById("recordingContent");
+    const recordingScroll = document.getElementById("recordingScroll");
+    const recordingFooter = document.getElementById("recordingFooter");
     const historyListContent = document.getElementById("historyListContent");
     const historyDetailContent = document.getElementById("historyDetailContent");
     const analyzeBtn = document.getElementById("analyzeBtn");
@@ -1500,6 +1705,11 @@ phone_html = """
     let voiceIndex = 0;
     let recordingScenarioIndex = 0;
     let currentRecordingScenario = null;
+    let selectedResident = null;
+    let selectedServices = [];
+    let residentMenuOpen = false;
+    let serviceMenuOpen = false;
+    let recordingStarted = false;
     let recordingAnalyzed = false;
     let analyzingTimer = null;
     let transcriptStreamTimer = null;
@@ -1705,6 +1915,26 @@ phone_html = """
         }
     };
 
+    const workerProfile = {
+        name: "李护理员"
+    };
+
+    const residentOptions = [
+        { id: "wang-xiulan", name: "王秀兰", bed: "A-201", callName: "王奶奶" },
+        { id: "zhang-jianguo", name: "张建国", bed: "A-203", callName: "张爷爷" },
+        { id: "li-apo", name: "李阿婆", bed: "B-105", callName: "李阿婆" },
+        { id: "zhao-mingde", name: "赵明德", bed: "B-108", callName: "赵爷爷" }
+    ];
+
+    const serviceOptions = [
+        "翻身护理",
+        "擦浴协助",
+        "服药提醒",
+        "血压测量",
+        "床铺整理",
+        "压疮护理"
+    ];
+
     const recordingScenarios = [
         {
             sceneLabel: "异常服务",
@@ -1719,6 +1949,8 @@ phone_html = """
             banner: "检测到明显负面体验信号",
             summary: "服务过程中，老人多次表达疼痛与明显不适，对护工动作力度和服务节奏表示持续不满。",
             keyFeedback: "老人多次提到“疼”“不舒服”“太急了”。",
+            processSummary: "服务中多次反馈不适",
+            abnormalDescription: "老人多次反馈疼痛、不舒服、太难受。",
             satisfaction: "不满意",
             conclusion: "本次服务存在明显负面体验信号，建议复核。",
             suggestion: "建议班组长复核本次服务过程，并关注后续同类服务动作力度。",
@@ -1751,6 +1983,8 @@ phone_html = """
             banner: "本次服务体验良好",
             summary: "服务过程中沟通顺畅，老人情绪平稳，并明确表达认可，整体体验良好。",
             keyFeedback: "老人明确表示“可以，挺舒服的”“谢谢你”。",
+            processSummary: "服务沟通顺畅完成",
+            abnormalDescription: "无明显异常反馈。",
             satisfaction: "满意",
             conclusion: "本次服务沟通平稳，服务体验良好。",
             suggestion: "建议保持当前沟通方式与服务节奏，作为正向服务样本留存。",
@@ -1782,7 +2016,9 @@ phone_html = """
             banner: "存在轻微不适反馈，已通过沟通缓和",
             summary: "服务过程中老人短暂表达不适，护工及时调整动作与节奏，沟通后情绪恢复平稳。",
             keyFeedback: "老人一次表达“有点酸”，后续反馈缓和。",
-            satisfaction: "中性偏负向",
+            processSummary: "轻微不适后已缓解",
+            abnormalDescription: "老人反馈局部酸胀，调整后缓解。",
+            satisfaction: "满意",
             conclusion: "本次服务存在轻微不适反馈，但已通过沟通调整。",
             suggestion: "建议后续同类服务继续关注动作力度，并保持过程中的确认沟通。",
             tags: [
@@ -1846,6 +2082,58 @@ phone_html = """
         return recordingScenarios.find(item => item.sceneLabel === label);
     }
 
+    function getSelectedServiceText() {
+        return selectedServices.length ? selectedServices.join(" / ") : "待选择";
+    }
+
+    function getResolvedScenario() {
+        if (!currentRecordingScenario) return null;
+
+        const resident = selectedResident || { name: "待选择", bed: "待选择" };
+        const callName = selectedResident ? selectedResident.callName : "王奶奶";
+        const transcript = currentRecordingScenario.transcript.map(item => ({
+            ...item,
+            text: item.text.replace(/王奶奶/g, callName)
+        }));
+        const abnormalDescription = currentRecordingScenario.abnormalDescription
+            ? currentRecordingScenario.abnormalDescription.replace(/王奶奶/g, callName)
+            : "无明显异常反馈。";
+        const processSummary = currentRecordingScenario.processSummary || "服务过程已完成";
+        return {
+            ...currentRecordingScenario,
+            worker: workerProfile.name,
+            resident: resident.name,
+            bed: resident.bed,
+            service: getSelectedServiceText(),
+            processSummary,
+            abnormalDescription,
+            transcript
+        };
+    }
+
+    function setRecordingFooterVisible(isVisible) {
+        recordingFooter.classList.toggle("is-hidden", !isVisible);
+        recordingScroll.classList.toggle("full-height", !isVisible);
+    }
+
+    function renderRecordingCurrentState() {
+        if (recordingAnalyzed) {
+            renderRecordingResult();
+            return;
+        }
+
+        if (transcriptStarted) {
+            renderRecordingTranscribing();
+            return;
+        }
+
+        renderRecordingLanding();
+    }
+
+    function canStartRecording() {
+        return Boolean(selectedResident && selectedServices.length);
+    }
+
     function getNextArchiveTimestamp() {
         historyRecordCounter += 1;
         const totalMinutes = (10 * 60 + 36) + historyRecordCounter * 9;
@@ -1875,7 +2163,7 @@ phone_html = """
     function archiveCurrentScenario() {
         if (!currentRecordingScenario) return null;
 
-        const newRecord = createHistoryRecord(currentRecordingScenario, getNextArchiveTimestamp());
+        const newRecord = createHistoryRecord(getResolvedScenario(), getNextArchiveTimestamp());
         historyRecords = [
             newRecord,
             ...historyRecords.filter(item => item.sceneLabel !== currentRecordingScenario.sceneLabel)
@@ -1978,22 +2266,21 @@ phone_html = """
     }
 
     function buildArchiveCard(record) {
+        const satisfactionTone = record.satisfaction === "不满意" ? "warning" : "positive";
         return `
             <button class="archive-card" type="button" data-record-id="${record.id}">
                 <div class="archive-card-top">
                     <div class="archive-card-main">
-                        <div class="archive-name">${record.resident}</div>
+                        <div class="archive-name">${record.resident} · ${record.bed}</div>
                         <div class="archive-service">${record.service}</div>
                     </div>
-                    <div class="archive-time">${record.archivedAt}</div>
+                    <div class="archive-side">
+                        <div class="archive-time">${record.archivedAt}</div>
+                        <span class="archive-status-pill compact ${satisfactionTone}">${record.satisfaction}</span>
+                    </div>
                 </div>
-                <div class="archive-status-row">
-                    <span class="archive-status-pill ${record.tone}">${record.satisfaction}</span>
-                    <span class="archive-scene">${record.sceneLabel}</span>
-                </div>
-                <div class="archive-summary">${record.summary}</div>
-                <div class="tag-row">${buildTagRow(record.tags)}</div>
-                <div class="archive-meta-note">点击查看完整对话、标签建议与处理建议</div>
+                <div class="archive-summary">服务过程摘要：${record.processSummary}</div>
+                <div class="archive-meta-note">点击查看服务记录详情</div>
             </button>
         `;
     }
@@ -2019,16 +2306,105 @@ phone_html = """
         `;
     }
 
+    function buildResidentMenu() {
+        if (!residentMenuOpen) return "";
+
+        return `
+            <div class="selection-menu">
+                ${residentOptions.map(option => {
+                    const checked = selectedResident && selectedResident.id === option.id ? "checked" : "";
+                    return `
+                        <label class="selection-option">
+                            <input type="radio" name="residentOption" value="${option.id}" ${checked} />
+                            <span>
+                                ${option.name}
+                                <span class="selection-option-meta">床号：${option.bed}</span>
+                            </span>
+                        </label>
+                    `;
+                }).join("")}
+                <button id="residentConfirmBtn" class="selection-confirm" type="button">确定</button>
+            </div>
+        `;
+    }
+
+    function buildServicePeopleCard(scenario) {
+        const residentNameClass = selectedResident ? "service-person-name" : "service-person-name selection-placeholder";
+        const selectionLocked = recordingStarted || transcriptStarted || recordingAnalyzed;
+        const disabledAttr = selectionLocked ? "disabled" : "";
+        return `
+            <div class="info-card service-person-card">
+                <div class="service-person-section">
+                    <div class="service-person-title">护工信息</div>
+                    <div class="service-person-name">${scenario.worker}</div>
+                </div>
+                <div class="service-person-section selectable">
+                    <div class="service-person-title">老人信息</div>
+                    <button id="residentSelectTrigger" class="selection-trigger" type="button" ${disabledAttr}>
+                        <span class="selection-trigger-main">
+                            <span class="${residentNameClass}">${scenario.resident}</span>
+                            <span class="service-person-meta">床号：${scenario.bed}</span>
+                        </span>
+                        <span class="selection-arrow">⌄</span>
+                    </button>
+                    ${buildResidentMenu()}
+                </div>
+            </div>
+        `;
+    }
+
+    function buildServiceMenu() {
+        if (!serviceMenuOpen) return "";
+
+        return `
+            <div class="selection-menu">
+                ${serviceOptions.map(option => {
+                    const checked = selectedServices.includes(option) ? "checked" : "";
+                    return `
+                        <label class="selection-option">
+                            <input type="checkbox" name="serviceOption" value="${option}" ${checked} />
+                            <span>${option}</span>
+                        </label>
+                    `;
+                }).join("")}
+                <button id="serviceConfirmBtn" class="selection-confirm" type="button">确定</button>
+            </div>
+        `;
+    }
+
+    function buildServiceSelectCard(scenario) {
+        const valueClass = selectedServices.length ? "service-select-value" : "service-select-value selection-placeholder";
+        const selectionLocked = recordingStarted || transcriptStarted || recordingAnalyzed;
+        const disabledAttr = selectionLocked ? "disabled" : "";
+        return `
+            <div class="info-card service-select-card">
+                <div class="service-select-head">
+                    <div>
+                        <div class="card-title">服务选择</div>
+                        <div class="${valueClass}">${scenario.service}</div>
+                    </div>
+                    <button id="serviceSelectTrigger" class="selection-trigger" type="button" style="width:auto;" ${disabledAttr}>
+                        <span class="selection-arrow">⌄</span>
+                    </button>
+                </div>
+                ${buildServiceMenu()}
+            </div>
+        `;
+    }
+
     function buildLiveAudioCard(scenario, options = {}) {
+        const idle = Boolean(options.idle);
         const stopped = Boolean(options.stopped);
-        const title = options.title || (stopped ? "录音已结束" : "录音采集中");
-        const description = options.description || (stopped
+        const title = options.title || (idle ? "录音待开始" : (stopped ? "录音已结束" : "录音采集中"));
+        const description = options.description || (idle
+            ? "请选择老人信息和服务项目，开始录音后将采集本次服务对话。"
+            : (stopped
             ? "本次服务录音已结束，系统正在整理并转写对话内容。"
-            : "系统正在持续采集本次服务对话，结束录音后可发起转写。");
-        const status = options.status || (stopped ? "已结束" : "录音中");
-        const statusClass = stopped ? "status-pill stopped" : "status-pill";
+            : "系统正在持续采集本次服务对话，结束录音后可发起转写。"));
+        const status = options.status || (idle ? "待开始" : (stopped ? "已结束" : "录音中"));
+        const statusClass = idle || stopped ? "status-pill stopped" : "status-pill";
         const timeText = options.timeText || (stopped ? scenario.duration : scenario.startTime);
-        const waveStoppedClass = stopped ? " stopped" : "";
+        const waveStoppedClass = idle || stopped ? " stopped" : "";
 
         return `
             <div class="info-card live-audio-card">
@@ -2056,10 +2432,12 @@ phone_html = """
         `;
     }
 
-    function buildTranscribeAction() {
+    function buildRecordingAction() {
+        const label = recordingStarted ? "结束录音并转写" : "开始录音";
+        const disabledAttr = !recordingStarted && !canStartRecording() ? "disabled" : "";
         return `
             <div class="inline-action-wrap">
-                <button id="transcribeBtn" class="inline-action-btn" type="button">结束录音并转写</button>
+                <button id="recordingPrimaryBtn" class="inline-action-btn" type="button" ${disabledAttr}>${label}</button>
             </div>
         `;
     }
@@ -2099,35 +2477,22 @@ phone_html = """
         `;
     }
 
-    function buildAnalysisCard(scenario, options = {}) {
-        const titleContent = options.showEditButton
-            ? `
-                <div class="card-title-row">
-                    <div class="card-title">AI建议分析</div>
-                    <button class="edit-btn" type="button">编辑</button>
-                </div>
-            `
-            : `<div class="card-title">AI建议分析</div>`;
-
+    function buildAnalysisCard(scenario) {
         return `
             <div class="info-card">
-                ${titleContent}
-                <div class="analysis-summary tone-${scenario.tone}">${scenario.banner}</div>
+                <div class="card-title">AI建议分析</div>
                 <div class="analysis-grid">
                     <div class="analysis-label">服务对象</div><div class="analysis-value">${scenario.resident}</div>
                     <div class="analysis-label">床位</div><div class="analysis-value">${scenario.bed}</div>
-                    <div class="analysis-label">服务项目</div><div class="analysis-value">${scenario.service}</div>
                     <div class="analysis-label">执行护工</div><div class="analysis-value">${scenario.worker}</div>
+                    <div class="analysis-label">服务项目</div><div class="analysis-value">${scenario.service}</div>
                     <div class="analysis-label">开始时间</div><div class="analysis-value">${scenario.startTime}</div>
                     <div class="analysis-label">结束时间</div><div class="analysis-value">${scenario.endTime}</div>
-                    <div class="analysis-label">录音时长</div><div class="analysis-value">${scenario.duration}</div>
-                    <div class="analysis-label">对话摘要</div><div class="analysis-value">${scenario.summary}</div>
-                    <div class="analysis-label">关键反馈</div><div class="analysis-value">${scenario.keyFeedback}</div>
-                    <div class="analysis-label">满意度判断</div><div class="analysis-value">${scenario.satisfaction}</div>
-                    <div class="analysis-label">服务结论</div><div class="analysis-value">${scenario.conclusion}</div>
-                    <div class="analysis-label">处理建议</div><div class="analysis-value">${scenario.suggestion}</div>
+                    <div class="analysis-label">服务时长</div><div class="analysis-value">${scenario.duration}</div>
+                    <div class="analysis-label">服务过程摘要</div><div class="analysis-value">${scenario.processSummary}</div>
+                    <div class="analysis-label">异常情况描述</div><div class="analysis-value"><div class="tag-row">${buildTagRow(scenario.tags)}</div></div>
+                    <div class="analysis-label">服务满意度</div><div class="analysis-value">${scenario.satisfaction}</div>
                 </div>
-                <div class="tag-row">${buildTagRow(scenario.tags)}</div>
             </div>
         `;
     }
@@ -2135,6 +2500,7 @@ phone_html = """
     function renderStreamingTranscript() {
         const streamContainer = document.getElementById("streamingTranscriptList");
         if (!streamContainer || !currentRecordingScenario) return;
+        const scenario = getResolvedScenario();
 
         if (streamedTranscriptCount === 0) {
             streamContainer.innerHTML = `
@@ -2146,7 +2512,7 @@ phone_html = """
         }
 
         streamContainer.innerHTML = buildTranscriptLinesMarkup(
-            currentRecordingScenario.transcript,
+            scenario.transcript,
             streamedTranscriptCount,
             "stream-line"
         );
@@ -2173,7 +2539,8 @@ phone_html = """
                 return;
             }
 
-            if (streamedTranscriptCount < currentRecordingScenario.transcript.length) {
+            const scenario = getResolvedScenario();
+            if (streamedTranscriptCount < scenario.transcript.length) {
                 streamedTranscriptCount += 1;
                 renderStreamingTranscript();
                 scheduleTranscriptStep(860);
@@ -2181,6 +2548,7 @@ phone_html = """
             }
 
             transcriptCompleted = true;
+            setRecordingFooterVisible(true);
             analyzeBtn.disabled = false;
             setLiveWaveRunning(false);
             transcriptStreamTimer = null;
@@ -2226,10 +2594,13 @@ phone_html = """
 
     function renderRecordingLanding() {
         if (!currentRecordingScenario) return;
+        const scenario = getResolvedScenario();
 
         recordingContent.innerHTML = `
-            ${buildLiveAudioCard(currentRecordingScenario)}
-            ${buildTranscribeAction()}
+            ${buildServicePeopleCard(scenario)}
+            ${buildServiceSelectCard(scenario)}
+            ${buildLiveAudioCard(scenario, { idle: !recordingStarted })}
+            ${buildRecordingAction()}
         `;
 
         bindRecordingActionButtons();
@@ -2237,24 +2608,29 @@ phone_html = """
 
     function renderRecordingTranscribing() {
         if (!currentRecordingScenario) return;
+        const scenario = getResolvedScenario();
 
         recordingContent.innerHTML = `
-            ${buildLiveAudioCard(currentRecordingScenario, {
+            ${buildServicePeopleCard(scenario)}
+            ${buildServiceSelectCard(scenario)}
+            ${buildLiveAudioCard(scenario, {
                 stopped: true,
                 status: "转写中",
-                timeText: currentRecordingScenario.duration
+                timeText: scenario.duration
             })}
             ${buildStreamingCard()}
         `;
 
         renderStreamingTranscript();
+        bindRecordingActionButtons();
     }
 
     function renderAnalyzingState() {
         if (!currentRecordingScenario) return;
+        const scenario = getResolvedScenario();
 
         recordingContent.innerHTML = `
-            ${buildStatusCard(currentRecordingScenario, {
+            ${buildStatusCard(scenario, {
                 title: "录音已结束",
                 description: "本次服务录音已结束，系统正在生成分析结果并整理服务建议。",
                 status: "分析中",
@@ -2274,23 +2650,16 @@ phone_html = """
 
     function renderRecordingResult() {
         if (!currentRecordingScenario) return;
+        const scenario = getResolvedScenario();
 
         recordingContent.innerHTML = `
-            ${buildAnalysisCard(currentRecordingScenario, { showEditButton: true })}
+            ${buildAnalysisCard(scenario)}
         `;
     }
 
     function renderHistoryList() {
         historyListContent.innerHTML = `
-            <div class="recording-hero">
-                <div class="scene-badge">已归档 ${historyRecords.length} 条</div>
-                <div class="recording-hero-desc">可查看全程录音分析后的服务归档，点击任意记录进入详情页查看完整内容。</div>
-            </div>
             <div class="recording-stack">
-                <div class="info-card">
-                    <div class="card-title">最近服务归档</div>
-                    <div class="card-desc">以下记录覆盖满意、不满意与轻微不适等典型服务场景。</div>
-                </div>
                 <div class="archive-list">
                     ${historyRecords.map(buildArchiveCard).join("")}
                 </div>
@@ -2313,7 +2682,6 @@ phone_html = """
 
         historyDetailContent.innerHTML = `
             <div class="recording-hero">
-                <div class="scene-badge">${currentHistoryRecord.sceneLabel}</div>
                 <div class="recording-hero-desc">查看本次服务的归档信息、完整对话内容与分析建议。</div>
             </div>
             <div class="recording-stack">
@@ -2327,16 +2695,80 @@ phone_html = """
     }
 
     function bindRecordingActionButtons() {
-        const transcribeBtn = document.getElementById("transcribeBtn");
-        if (!transcribeBtn) return;
+        const residentSelectTrigger = document.getElementById("residentSelectTrigger");
+        const residentConfirmBtn = document.getElementById("residentConfirmBtn");
+        const serviceSelectTrigger = document.getElementById("serviceSelectTrigger");
+        const serviceConfirmBtn = document.getElementById("serviceConfirmBtn");
+        const recordingPrimaryBtn = document.getElementById("recordingPrimaryBtn");
 
-        transcribeBtn.addEventListener("click", handleTranscribeClick);
+        if (residentSelectTrigger) {
+            residentSelectTrigger.addEventListener("click", () => {
+                if (recordingStarted || transcriptStarted || recordingAnalyzed) return;
+                residentMenuOpen = !residentMenuOpen;
+                serviceMenuOpen = false;
+                renderRecordingCurrentState();
+            });
+        }
+
+        if (residentConfirmBtn) {
+            residentConfirmBtn.addEventListener("click", () => {
+                const checked = recordingContent.querySelector("input[name='residentOption']:checked");
+                const resident = checked ? residentOptions.find(item => item.id === checked.value) : null;
+                if (resident) {
+                    selectedResident = resident;
+                }
+                residentMenuOpen = false;
+                renderRecordingCurrentState();
+            });
+        }
+
+        if (serviceSelectTrigger) {
+            serviceSelectTrigger.addEventListener("click", () => {
+                if (recordingStarted || transcriptStarted || recordingAnalyzed) return;
+                serviceMenuOpen = !serviceMenuOpen;
+                residentMenuOpen = false;
+                renderRecordingCurrentState();
+            });
+        }
+
+        if (serviceConfirmBtn) {
+            serviceConfirmBtn.addEventListener("click", () => {
+                selectedServices = Array.from(recordingContent.querySelectorAll("input[name='serviceOption']:checked"))
+                    .map(input => input.value);
+                serviceMenuOpen = false;
+                renderRecordingCurrentState();
+            });
+        }
+
+        if (recordingPrimaryBtn) {
+            recordingPrimaryBtn.addEventListener("click", handleRecordingPrimaryClick);
+        }
+    }
+
+    function handleRecordingPrimaryClick() {
+        if (!currentRecordingScenario || transcriptStarted || recordingAnalyzed) return;
+
+        if (!recordingStarted) {
+            if (!canStartRecording()) return;
+
+            recordingStarted = true;
+            residentMenuOpen = false;
+            serviceMenuOpen = false;
+            renderRecordingLanding();
+            return;
+        }
+
+        handleTranscribeClick();
     }
 
     function handleTranscribeClick() {
         if (!currentRecordingScenario || transcriptStarted || recordingAnalyzed) return;
 
         transcriptStarted = true;
+        recordingStarted = false;
+        residentMenuOpen = false;
+        serviceMenuOpen = false;
+        setRecordingFooterVisible(true);
         analyzeBtn.disabled = true;
         renderRecordingTranscribing();
         startTranscriptStream();
@@ -2345,6 +2777,11 @@ phone_html = """
     function openRecordingDemo() {
         currentRecordingScenario = recordingScenarios[recordingScenarioIndex % recordingScenarios.length];
         recordingScenarioIndex += 1;
+        selectedResident = null;
+        selectedServices = [];
+        residentMenuOpen = false;
+        serviceMenuOpen = false;
+        recordingStarted = false;
         recordingAnalyzed = false;
         streamedTranscriptCount = 0;
         transcriptStarted = false;
@@ -2358,6 +2795,7 @@ phone_html = """
         clearTranscriptStream();
         analyzeBtn.textContent = "生成AI分析";
         analyzeBtn.disabled = true;
+        setRecordingFooterVisible(false);
         showView(recordingView, RECORDING_TOP);
         renderRecordingLanding();
     }
@@ -2369,6 +2807,8 @@ phone_html = """
         }
 
         clearTranscriptStream();
+        setRecordingFooterVisible(true);
+        recordingStarted = false;
         recordingAnalyzed = false;
         transcriptStarted = false;
         transcriptCompleted = false;
@@ -2421,7 +2861,7 @@ phone_html = """
     function parseAction(text) {
         const q = normalizeInput(text);
 
-        if (q.includes("AI智能服务") || q.includes("AI智能护理") || q.includes("全程录音") || q.includes("服务留痕") || q.includes("对话分析")) {
+        if (q.includes("开始服务") || q.includes("AI智能服务") || q.includes("AI智能护理") || q.includes("全程录音") || q.includes("服务留痕") || q.includes("对话分析")) {
             return "full_record";
         }
         if (q.includes("历史服务记录") || q.includes("历史记录") || q.includes("服务归档")) {
@@ -2489,7 +2929,7 @@ phone_html = """
             setTimeout(() => {
                 addTextMessage(
                     "assistant",
-                    "您可以尝试输入：AI智能服务、历史服务记录、今日护理任务、王秀兰老人基本情况、查看床位清单、查询待办服务、重点关注对象。"
+                    "您可以尝试输入：开始服务、历史服务记录、今日护理任务、王秀兰老人基本情况、查看床位清单、查询待办服务、重点关注对象。"
                 );
             }, 280);
         }
